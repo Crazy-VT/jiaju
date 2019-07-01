@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{CSS_PATH}css/basic.css">
+    <link rel="stylesheet" href="{CSS_PATH}css/style2.css">
+    <style>
+        .container h2{
+            text-align: center;
+            line-height: 3;
+        }
+    </style>
+</head>
+<body>
+{template "content","header"}
+<div class="container">
+    {pc:content action="lists" catid="$catid"}
+    <h2>{$title}</h2>
+    <img src="{$thumb}" alt="">
+    <p>{$content}</p>
+    {/pc}
+</div>
+{template "content","footer"}

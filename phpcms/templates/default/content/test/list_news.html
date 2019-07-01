@@ -1,0 +1,14 @@
+{template "content","header"}
+
+<h2>国内热点</h2>
+<ul>
+    {pc:content action="lists" catid="9" number="1"}
+    {loop $data $v}
+    <li><a href="{$v['url']}">{$v['title']}</a>
+        {$v['description']}{$v['inputtime']}
+    </li>
+    {/loop}
+    {/pc}
+</ul>
+</body>
+</html>

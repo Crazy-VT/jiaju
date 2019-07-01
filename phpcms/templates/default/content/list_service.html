@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>家居</title>
+    <link rel="stylesheet" href="{CSS_PATH}css/style.css">
+</head>
+<style>
+    figcaption img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+</style>
+<body>
+{template "content","header"}
+<section id="section">
+    <div class="list">
+        <div class="about">
+            <div class="clearfix"></div>
+            <div>
+                <div class="container">
+                    <h2>技术服务</h2>
+                    <div class="fig">
+                        {pc:content action="lists" catid="16"}
+                        {loop $data $v}
+                        <figcaption>
+                            <span><strong>01/</strong>{$v['title']}</span>
+                            <img src="{$v['thumb']}">
+                            <p>{$v['description']}</p>
+                            <a href="{$v['url']}">阅读更多</a>
+                        </figcaption>
+                        {/loop}
+                        {/pc}
+                        <div class="clearfix"></div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+{template "content","footer"}

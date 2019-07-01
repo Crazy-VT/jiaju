@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>家居</title>
+    <link rel="stylesheet" href="{CSS_PATH}css/basic.css">
+    <link rel="stylesheet" href="{CSS_PATH}css/style2.css">
+</head>
+<style>
+    .blog_img{
+        height: 200px;
+        width: 250px;
+    }
+    .blog_img>img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+{template "content","header"}
+<section class="bl_section">
+    <div class="container">
+        <h2>{$CATEGORYS[$catid]['catname']}</h2>
+        <div class="blog_section">
+            <aside class="list_left">
+                {pc:content action="lists" catid="$catid" num="3" page="$page"}
+                {loop $data $v}
+                <div class="blog_text">
+                    <h3>{$v['title']}</h3>
+                    <p>由管理员发布于 {date("Y/m/d",$v["inputtime"])}</p>
+                    <div>
+                        <div class="blog_img">
+                            <img src="{$v[thumb]}">
+                        </div>
+                        <div class="blog_read">
+                            <p>{$v[description]}</p>
+                            <button class="more"><a href="{$v['url']}">阅读更多</a></button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog_admin">
+                        <ul>
+                            <li><a href="###"><img src="{IMG_PATH}images/h1.png">{$CATEGORYS[$v['catid']]['catname']}</a></li>
+                            <li><img src="{IMG_PATH}images/h2.png">{date("Y/m/d",$v['inputtime'])}</li>
+                            <li><a href="###"><img src="{IMG_PATH}images/h3.png">管理员</a></li>
+                        </ul>
+                    </div>
+                </div>
+                {/loop}
+                {/pc}
+            </aside>
+            <div class=" list_right">
+                <div>
+                    <h3>类别</h3>
+                    <ul>
+                        {pc:content action="category" catid=$CATEGORYS[$catid]['catid']"}
+                        {loop $data $v}
+                        <li><a href="{$v['url']}">{$v['catname']}</a></li>
+                        {/loop}
+                        {/pc}
+                    </ul>
+                </div>
+                <div>
+                    <h3>最新的案例</h3>
+                    <ul>
+                        <li><a href="###">休闲</a></li>
+                        <li><a href="###">娱乐</a></li>
+                        <li><a href="###">办公</a></li>
+                        <li><a href="###">儿童</a></li>
+                        <li><a href="###">聚会</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>档案</h3>
+                    <ul>
+                        <li><a href="###"><time>2016/1</time></a></li>
+                        <li><a href="###"><time>2016/2</time></a></li>
+                        <li><a href="###"><time>2016/3</time></a></li>
+                        <li><a href="###"><time>2016/4</time></a></li>
+                        <li><a href="###"><time>2016/5</time></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <style>
+                .container>a:first-child{
+                    display: none;
+                }
+                .container>a:not(.a1){
+                    display: none;
+                }
+                .container>span{
+                    display: none;
+                }
+                .container>.a1{
+                    width:90px;
+                    height:30px;
+                    border-radius: 15px;
+                    background-color: #F7F7F7;
+                    border: 1px solid #cccccc;
+                    color:#999999;
+                }
+            </style>
+            <div class="blog_bt">
+                <div class="container">
+<!--                    <input class="blog_a" type="button" value="前一页">-->
+<!--                    <input class="blog_a" type="button" value="下一页">-->
+                    {$pages}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{template "content","footer"}

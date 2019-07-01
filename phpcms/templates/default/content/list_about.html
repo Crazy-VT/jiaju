@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" href="{CSS_PATH}css/basic.css">
+    <link rel="stylesheet" href="{CSS_PATH}css/style2.css">
+    <link rel="stylesheet" href="{CSS_PATH}css/swiper.min.css">
+    <script src="{JS_PATH}js/swiper.js"></script>
+    <style>
+        .team-text{
+            display: none;
+        }
+        .team-img:hover .team-text{
+            display: block;
+
+        }
+    </style>
+</head>
+<body>
+{template "content","header"}
+
+<section id="section">
+    <div class="container">
+        <div class="about_top">
+            <h2>关于</h2>
+            <div>
+                <div class="text">
+                {pc:content action="lists" moreinfo="1" catid="$catid"}
+                {loop $data $v}
+                    {$v['content']}
+                {/loop}
+                {/pc}
+                </div>
+                <img src="{IMG_PATH}images/about1.png">
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+        <div class="about_middle">
+            <h2>家居设计</h2>
+            <div class="middle_left">
+                {$v['idea']}
+                <div class="clearfix"></div>
+            </div>
+            <div class="middle_right">
+                <h4>我们的能力</h4>
+                <ul>
+                    <li><img src="{IMG_PATH}images/cir.png"><a href="###">家庭生活</a></li>
+                    <li><img src="{IMG_PATH}images/cir.png"><a href="###">奇思妙想</a></li>
+                    <li><img src="{IMG_PATH}images/cir.png"><a href="###">小小家居</a></li>
+                    <li><img src="{IMG_PATH}images/cir.png"><a href="###">舒服乐园</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="about_footer">
+                <h2>我们的团队</h2>
+            <div class="footer_team">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                {pc:content action="lists" catid="21" moreinfo="1"}
+                {loop $data $v}
+                <div class="swiper-slide">
+                    <div class="team-img">
+                        <img src="{$v['thumb']}">
+                        <div class="team-text">
+                            <div class="text-title">{$v[name]}</div>
+                            <div class="text-content">{$v[position]}</div>
+                        </div>
+                    </div>
+                </div>
+                {/loop}
+                {/pc}
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        slidesPerView:3,
+        loop:true,
+        autoplay:true
+
+    })
+</script>
+{template "content","footer"}

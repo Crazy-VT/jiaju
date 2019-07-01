@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>家居</title>
+    <link rel="stylesheet" href="{CSS_PATH}css/basic.css">
+    <link rel="stylesheet" href="{CSS_PATH}css/style2.css">
+</head>
+<body>
+{template "content","header"}
+<section class="contant_section">
+    <div class="container">
+        <h2>关于</h2>
+        <div class="contant_img">
+            <img src="{IMG_PATH}images/c1.png" alt="链接超时">
+        </div>
+        <div class="contant_list">
+            <h4>留言</h4>
+
+            <div>
+                <form method="post" action="http://localhost/install/index.php?m=formguide&c=index&a=show&formid=17&siteid=1&pc_hash=qnX7a7" name="myform" id="myform">
+                    <table class="table_form" width="100%" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <th width="80"> <font color="red">*</font> 姓名	  </th>
+                            <td><input type="text" name="info[name]" id="name" size="50" value=""  class="below"  >  </td>
+                        </tr>
+                        <tr>
+                            <th width="80"> <font color="red">*</font> 电子邮件	  </th>
+                            <td><input type="text" name="info[email]" id="email" size="50" value=""  class="below"  >  </td>
+                        </tr>
+                        <tr>
+                            <th width="80"> 留言	  </th>
+                            <td><textarea name='info[message]' id='message' style='width:100%;' class="area"   ></textarea>  </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <input type="submit" name="dosubmit" id="dosubmit" class="send" value=" 提交 ">&nbsp;<input type="reset" class="send" value=" 取消 ">
+                </form>
+
+            </div>
+        </div>
+        <div class="contant_aside">
+            {pc:content action="lists" catid="19" moreinfo="1"}
+            {loop $data $v}
+            <h4>{$v['title']}</h4>
+            <div>
+                <ul>
+                    <li> email : <span>{$v['email']}</span></li>
+                    <li> phone : <span>{$v['phone']}</span></li>
+                    <li> address : <span>{$v['address']}</span></li>
+                </ul>
+            </div>
+            {/loop}
+            {/pc}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+
+{template "content","footer"}
